@@ -38,6 +38,13 @@ and open the template in the editor.
   text-align: center;
  
 }
+#avatar{
+    
+    max-height: 200px;
+    max-width: 200px;
+    border:8px #EF3B3A solid;
+    border-radius: 100%;
+}
 .form {
   position: relative;
   z-index: 0;

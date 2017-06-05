@@ -1,6 +1,6 @@
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
-$('#button a').click(function(){
+$('#button>#next ').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });

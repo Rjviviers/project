@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><?php session_start(); ?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -24,23 +24,23 @@ and open the template in the editor.
     <div class="thumbnail"><img src="images/hat.svg"/></div>
     
     
-  <form class="register-form" action="validate.php" method="POST">
+  <form class="register-form" method="POST">
     <input type="text" placeholder="email address"/>
     <input type="text" placeholder="Full Name"/>
     <input type="password" placeholder="Password"/>
     <input type="password" placeholder="Password Conformation"/>
     <input name="captcha" type="text" placeholder="enter numbers below">
     <img src="captcha.php" /><br>
-    <input name="submit" type="submit" value="Submit" id="button">
+    <input name="submitRegistration" type="submit" value="Submit" id="button">
     <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
   
-    <form class="login-form" action="validate.php" method="POST">
+    <form class="login-form"  method="POST">
     <input type="text" placeholder="username"/>
     <input type="password" placeholder="password"/>
     <input name="captcha" type="text" placeholder="enter numbers below">
     <img src="captcha.php" /><br>
-    <input name="submit" type="submit" value="Submit" id="button">
+    <input name="submitLogin" type="submit" value="Submit" id="button">
    
     
     <p class="message">Not registered? <a href="#">Create an account</a></p>
@@ -50,11 +50,34 @@ and open the template in the editor.
 </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><!-- jquery library for simple movement between registration and Login  -->
 
-    <script src="js/index.js"></script> 
+    <script> 
+        $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+$('#button a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+    </script> 
 
         <?php
-        
+        if (isset($_POST['submitLogin'])) {
+            if (isset($_POST["captcha"]) && $_POST["captcha"] != "" && $_SESSION["code"] == $_POST["captcha"]) {
 
-?>
+                header('location:RegistrationStatus.php');
+            } else {
+                echo "Wrong Code Entered";
+            }
+        }
+         if (isset($_POST['submitRegistration'])) {
+            if (isset($_POST["captcha"]) && $_POST["captcha"] != "" && $_SESSION["code"] == $_POST["captcha"]) {
+
+                header('location:RegistrationStatus.php');
+            } else {
+                echo "Wrong Code Entered";
+            }
+        }
+        ?>
+    
     </body>
 </html>

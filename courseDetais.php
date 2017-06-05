@@ -27,7 +27,7 @@ and open the template in the editor.
                 <option>Nelspruit</option>
                 <option>New York</option>
             </select><br>
-            <button id="button"><a href="#" >Submit</a></button>
+            <button id="button"><a id="next" href="#" >Submit</a></button>
         </form>
         
         <form class="form-term" action="" method="POST" >

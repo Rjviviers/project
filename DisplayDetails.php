@@ -16,7 +16,10 @@ and open the template in the editor.
         <div ><img src="images/mainlogo.png" id="logo-main-topleft"</div>
         <span id="Span-text">Thank You</span>
         <div class="form">
-            <img src="images/avatar.jpg" alt="avatar" id="avatar"/> 
+          
+            <?php 
+            echo $_COOKIE['avatar']; 
+            ?>
             <h2>Personal Details</h2>
             <p style="border-right: solid 1px #000;"></p>
             
