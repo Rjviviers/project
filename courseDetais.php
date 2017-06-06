@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?PHP session_start(); 
-include './Functions.php';?>
+include './Functions.php';
+$Areas = array('PTA','Cape Town','JHB','Nelspruit','New York')
+?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -21,11 +23,11 @@ and open the template in the editor.
         <form class="form-unit" action="" method="POST" >
             <select>
                 <option>-Select A unit-</option>
-                <option>PTA</option>
-                <option>Cape Town</option>
-                <option>JHB</option>
-                <option>Nelspruit</option>
-                <option>New York</option>
+                <?PHP 
+                for ($i = 0; $i < count($Areas); $i++) {
+                    echo "<option>$Areas</option>";
+                }
+                ?>
             </select><br>
             <button id="button"><a id="next" href="#" >Submit</a></button>
         </form>
@@ -33,10 +35,11 @@ and open the template in the editor.
         <form class="form-term" action="" method="POST" >
             <select>
                 <option>-Select a Term-</option>
-                <option>2017</option>
-                <option>2018</option>
-                <option>2019</option>
-                <option>2020</option>
+                <?Php 
+                for ($i = 2017; $i < 2022; $i++) {
+                    echo "<option>$i</option>";
+                }
+                ?>
             </select>
             <input name="submit" type="submit" value="Submit" id="button"> 
         </form>

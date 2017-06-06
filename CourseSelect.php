@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?PHP session_start(); 
-include './Functions.php';?>
+include './Functions.php';
+$courses = array('BsC Computer Sciences','Dip Arts&Design','BsC Arts&Design','Masters : Coding','Masters : Arts&Design');
+?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -20,12 +22,13 @@ and open the template in the editor.
         
         <form class="form-unit" action="" method="POST" >
             <select>
+                
                 <option>-Select A Course-</option>
-                <option>BsC Computer Sciences</option>
-                <option>Dip Arts&Design</option>
-                <option>BsC Arts&Design</option>
-                <option>Masters : Coding</option>
-                <option>Masters : Arts&Design</option>
+                <?php 
+                for ($i = 0; $i < count($courses); $i++) {
+                    echo "<option>$courses[$i]</options>";
+                }
+                ?>
             </select><br>
             <input name="submit" type="submit" value="Submit" id="button"> 
         </form>
