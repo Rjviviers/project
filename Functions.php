@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $errors = array();
 
 function stickytext($ElementName) {
@@ -25,67 +26,61 @@ function ValidateTextFields($ElementName) {
     global $errors;
     if (isset($_POST['submit'])) {
         $value = trim($_POST[$ElementName]);
-        switch ($ElementName) {
-
-            case "firstName":
-
-                if (!empty($value)) {
-                    if (ctype_alpha($value)) {
-                        $_SESSION[$ElementName] = $value;
-                        // return TRUE;
-                    } else {
-                        echo "Please fill in $ElementName... with only alphabet characters<br>";
-                        // return FALSE;
-                    }
-                } else {
-                    echo "Please enter $ElementName...<br>";
-                    //return FALSE;
+        if (!empty($value)) {
+            if (ctype_alpha($value)) {
+                $_SESSION[$ElementName] = $value;
+                // return TRUE;
+            } else {
+                $errors[] =  "Please fill in $ElementName... with only alphabet characters<br>";
+                // return FALSE;
+            }
+        } else {
+            $errors[] =  "Please enter $ElementName...<br>";
+            //return FALSE;
+        }
+    }
+}
+function capcha(){
+    global $errors;
+    
+    if (isset($_POST["captcha"]) && $_POST["captcha"] != "" && $_SESSION["code"] == $_POST["captcha"]) {
+                
                 }
-                break;
-            case "lastName":
-                if (!empty($value)) {
-                    if (ctype_alpha($value)) {
-                        $_SESSION[$ElementName] = $value;
-                        // return TRUE;
-                    } else {
-                        $errors[] = "Please fill in $ElementName... with only alphabet characters<br>";
-                        //return FALSE;
-                    }
-                } else {
-                    $errors[] = "Please enter $ElementName...<br>";
-                    // return FALSE;
-                }
-                break;
-            case "IDNumber":
-                if (!empty($value)) {
-                    if (ctype_digit($value)) {
-                        $_SESSION[$ElementName] = $value;
-                        //return TRUE;
-                    } else {
-                        $errors[] = "Please fill in $ElementName... with only digets<br>";
-                        // return FALSE;
-                    }
-                } else {
-                    $errors[] = "Please fill in the $ElementName field<br>";
-                    // return FALSE;
-                }
-                break;
-            case "cellNumber":
-                if (!empty($value)) {
-                    if (ctype_digit($value)) {
-                        $_SESSION[$ElementName] = $value;
-                        // return TRUE;
-                    } else {
-                        $errors[] = "Please fill in $ElementName... with only digets<br>";
-                        // return FALSE;
-                    }
-                } else {
-                    $errors[] = "Please fill in the $ElementName field<br>";
-                    // return FALSE;
-                }
-                break;
-            default:
-                break;
+             else {
+                $errors[] = "Wrong Code Entered";
+            }
+}
+function ValidatePassword($pass,$confirm) {
+    global $errors ;
+    $password = trim($pass);
+    $password2 = trim($confirm);
+    if (!empty($password)&&!empty($password2)) {
+        if ($pass == $confirm) {
+        $_SESSION['Password'] = $pass;
+    }
+    else   {
+        $errors[] = "Passwords Do Not Match";
+    }
+    }
+    else   {
+          $errors[] = "Passwords cant be empty";
+    }
+}
+function ValidateTextNums($ElementName) {
+    global $errors;
+    if (isset($_POST['submit'])) {
+        $value = trim($_POST[$ElementName]);
+        if (!empty($value)) {
+            if (ctype_digit($value)) {
+                $_SESSION[$ElementName] = $value;
+                //return TRUE;
+            } else {
+                $errors[] = "Please fill in $ElementName... with only digets<br>";
+                // return FALSE;
+            }
+        } else {
+            $errors[] = "Please fill in the $ElementName field<br>";
+            // return FALSE;
         }
     }
 }

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
 -->
 <html>
     <head>
@@ -13,16 +10,17 @@ and open the template in the editor.
     
     
     <body>
-        
-        <nav class="Navigation">
-            <ol>
+        <header>
+            <nav>
+            <ol class="Navigation">
                 <li><a href="#" >Home</a></li>
                 <li><a href="#">Courses</a></li>
                 <li><a href="#">About us</a></li>
                 <li><a href="loginregister.php">Login/Sign Up</a></li>
             </ol>
         </nav>
-        
+        </header>
+
         <?php
         // put your code here
         ?>
