@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?PHP session_start(); 
 include './Functions.php';
-$courses = array('BsC Computer Sciences','Dip Arts&Design','BsC Arts&Design','Masters : Coding','Masters : Arts&Design');
+
 ?>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -21,15 +21,7 @@ and open the template in the editor.
         <div class="thumbnail"><img src="images/book.png"/></div>
         
         <form class="form-unit" action="" method="POST" >
-            <select>
-                
-                <option>-Select A Course-</option>
-                <?php 
-                for ($i = 0; $i < count($courses); $i++) {
-                    echo "<option>$courses[$i]</options>";
-                }
-                ?>
-            </select><br>
+            
             <input name="submit" type="submit" value="Submit" id="button"> 
         </form>
         
@@ -37,12 +29,13 @@ and open the template in the editor.
         
         
     </div>
-       
+        
         <?php
         if (isset($_POST['submit'])) {
             header('location:DisplayDetails.php');
         }
         ?>
+        </div>
         <footer>
             <ol class="progtrckr" data-progtrckr-steps="5">
                 <li class="progtrckr-done">Enter All Personal Details</li>

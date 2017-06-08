@@ -1,5 +1,4 @@
-<!DOCTYPE html><?php
-session_start();
+<!DOCTYPE html><?php session_start();
 include './Functions.php';
 ?>
 <html>
@@ -16,7 +15,7 @@ include './Functions.php';
 
             <form class="" action="" method="POST" enctype="multipart/form-data">
                 <input type="text" placeholder="First Name" name="firstName" value="<?php echo $_SESSION['name']; ?>"/>
-                <input type="text" placeholder="Middle Name" name="MiddleName" value="<?php stickytext('MiddleName') ?>"/>
+               
                 <input type="text" placeholder="Last Name" name="lastName" value="<?php stickytext('lastName') ?>"/>
                 <input type="text" placeholder="National ID Number" name="IDNumber" value="<?php stickytext('IDNumber') ?>"/> 
                 <div id="form-row">
@@ -49,13 +48,13 @@ include './Functions.php';
 
         <div id="php-container">
             <?php
-            var_dump($_SESSION);
+            //var_dump($_SESSION);
             if (isset($_POST['submit'])) {
                 
                 //ValidateTextFields('firstName');
                 ValidateTextFields('lastName');
-                ValidateTextFields('IDNumber');
-                ValidateTextFields('cellNumber');
+                ValidateTextNums('IDNumber');
+                ValidateTextNums('cellNumber');
                 ValidateRadio('gender');
                 validatePicture('pic');
                 
@@ -66,14 +65,7 @@ include './Functions.php';
                 else{
                     header("location:courseDetais.php");
                 }
-                for ($i = 0; $i < count($errors); $i++) {
-                    if ($errors[$i] == FALSE) {
-                        
-                        break;
-                    } else {
-                        
-                    }
-                }
+                
             }
             ?>
         </div>

@@ -24,7 +24,7 @@ function stickyRadio($ElementName, $CheckedParam) {
 
 function ValidateTextFields($ElementName) {
     global $errors;
-    if (isset($_POST['submit'])) {
+    
         $value = trim($_POST[$ElementName]);
         if (!empty($value)) {
             if (ctype_alpha($value)) {
@@ -38,7 +38,7 @@ function ValidateTextFields($ElementName) {
             $errors[] =  "Please enter $ElementName...<br>";
             //return FALSE;
         }
-    }
+    
 }
 function capcha(){
     global $errors;
@@ -87,15 +87,15 @@ function ValidateTextNums($ElementName) {
 
 function ValidateDropDown($ElementName) {
     global $errors;
-    if (isset($_POST['ok'])) {
+    
         $value = $_POST[$ElementName];
-        if ($value == "-Select Option-") {
+        if ($value == "-Select A $ElementName-") {
             $errors[] = "Please select an option in the $ElementName droptdown<br>";
         } else {
             // echo "$ElementName  : $value<br>";
             $_SESSION[$ElementName] = $value;
         }
-    }
+    
 }
 
 function ValidateRadio($ElementName) {

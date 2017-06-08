@@ -28,6 +28,16 @@ class DBConn {
         }
     }
     
+    function insert($name,$firstname,$surname,$idnum,$contactnum,$email,$courseunit,$term,$courseid,$pass){
+        $StudID = time()-1400000 + $_SESSION['name'];
+        $query1 = "INSERT INTO `studentdetails` (`SID`, `StudentID`, `FirstName`, `LastName`, `IDNumber`, `ContactNumber`, `Email`) VALUES (NULL, '$StudID', '$firstname', '$surname', '$idnum', '$contactnum', '$email');";
+        $query2 = "INSERT INTO `coursedetails` (`ID`, `CourseUnit`, `CourseTerm`, `CourseID`, `StudentID`) VALUES (NULL, '$courseunit', '$term', '$courseid', '$StudID');";
+        $query3 = "INSERT INTO `logindetails` (`Username`, `Password`, `StudentID`) VALUES ('$email', '$pass', '$StudID');";
+        mysqli_query($this->link, $query1);
+        mysqli_query($this->link, $query2);
+        mysqli_query($this->link, $query3);
+        
+    }
     
     
 }

@@ -1,6 +1,5 @@
-<!DOCTYPE html><?php
-session_start();
-include './Functions.php';
+<!DOCTYPE html><?php session_start();
+include_once './Functions.php';
 ?>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -9,7 +8,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <link rel="stylesheet" href="Style.css"/>
+        <link rel="stylesheet" href="css/Style.css"/>
         <meta charset="UTF-8">
         <title>Login Page</title>
     </head>
@@ -51,29 +50,29 @@ and open the template in the editor.
 
 
         </div>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><!-- jquery library for simple movement between registration and Login  -->
-
+<!--    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+        <script src='js/jquery-1.10.2.min.js'></script>
         <script>
             $('.message a').click(function () {
                 $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
             });
         </script> 
-
+        <div id="php-container">
         <?php
-//        if (isset($_POST['submitLogin'])) {
-//            
-//            if (isset($_POST["captcha"]) && $_POST["captcha"] != "" && $_SESSION["code"] == $_POST["captcha"]) {
-//               
-//                header('location:RegistrationStatus.php');
-//            } else {
-//                
-//                echo "Wrong Code Entered";
-//            }
-//        }
+        if (isset($_POST['submitLogin'])) {
+            
+            if (isset($_POST["captcha"]) && $_POST["captcha"] != "" && $_SESSION["code"] == $_POST["captcha"]) {
+               
+                header('location:RegistrationStatus.php');
+            } else {
+                
+                echo "Wrong Code Entered";
+            }
+        }
         if (isset($_POST['submitRegistration'])) {
 
-            // capcha();
-            // ValidatePassword($_POST['password'], $_POST['confirm']);
+            capcha();
+            ValidatePassword($_POST['password'], $_POST['confirm']);
             ValidateTextFields("name");
             if (count($errors) > 0) {
                 for ($i = 0; $i < count($errors); $i++) {
@@ -84,6 +83,6 @@ and open the template in the editor.
             }
         }
         ?>
-
+        </div>
     </body>
 </html>
